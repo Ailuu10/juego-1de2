@@ -49,7 +49,7 @@
 
         body {
             color: var(--text-main);
-            font-size: 11px;
+            font-size: 13px; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -94,7 +94,7 @@
         .hidden { display: none !important; }
 
         h1 { 
-            font-size: 1.8rem; 
+            font-size: 2.2rem; 
             font-weight: bold; 
             text-align: center; 
             color: var(--wood-dark);
@@ -103,7 +103,7 @@
         }
         
         h2 { 
-            font-size: 1rem; 
+            font-size: 1.3rem; 
             font-weight: bold; 
             text-align: center; 
             margin-bottom: 14px; 
@@ -111,7 +111,7 @@
         }
         
         p { 
-            font-size: 0.65rem; 
+            font-size: 0.8rem; 
             line-height: 1.6; 
             color: var(--text-main); 
             margin-bottom: 16px; 
@@ -122,8 +122,8 @@
             background: var(--wood);
             color: var(--text-light); 
             border: 4px solid var(--wood-dark); 
-            padding: 12px;
-            font-size: 0.7rem; 
+            padding: 14px;
+            font-size: 0.85rem; 
             font-weight: bold;
             cursor: pointer; 
             width: 100%; 
@@ -150,7 +150,7 @@
             box-shadow: inset 0 0 0 2px #fff3c7;
         }
         .stat-huge { 
-            font-size: 2.2rem; 
+            font-size: 2.5rem; 
             font-weight: bold; 
             color: var(--danger); 
             margin-bottom: 8px; 
@@ -168,12 +168,12 @@
         }
         .hud-metric { 
             text-align: center; 
-            font-size: 0.45rem; 
+            font-size: 0.6rem; 
             color: #5b4632; 
             font-weight: bold; 
         }
         .hud-val { 
-            font-size: 0.65rem; 
+            font-size: 0.85rem; 
             font-weight: bold; 
             color: var(--text-main); 
             display: block; 
@@ -230,21 +230,20 @@
         }
         .desk-node .sprite-wrap svg { width: 100%; height: 100%; }
 
-        /* Bocadillo de diálogo optimizado para texto */
         .alert-indicator-tag {
             position: absolute; 
-            top: -20px; left: 50%; transform: translateX(-50%);
+            top: -22px; left: 50%; transform: translateX(-50%);
             background: #fff8e1;
             color: var(--text-main);
             border: 2px solid #444;
-            padding: 4px 5px; 
+            padding: 4px 6px; 
             display: none; 
             z-index: 20; 
             width: auto;
-            max-width: 95px;
+            max-width: 105px; 
             height: auto;
             white-space: nowrap;
-            font-size: 4.5px;
+            font-size: 6.5px; 
             font-weight: bold;
             box-shadow: 2px 2px 0px rgba(0,0,0,0.15);
             text-align: center;
@@ -270,75 +269,126 @@
 
         @keyframes retroBlink { from { opacity: 1; } to { opacity: 0.6; } }
 
+        /* ========================================================
+           INTERFAZ DE MINIJUEGOS ENLARGECIDA
+           ======================================================== */
         #minigame-portal {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--wall); 
             color: var(--text-main);
             z-index: 100;
-            display: flex; flex-direction: column; padding: 16px; justify-content: space-between;
+            display: flex; flex-direction: column; 
+            padding: 24px 18px; 
+            justify-content: space-between;
             border: 6px double var(--frame-dark);
         }
         #mg-header { 
             display: flex; 
             justify-content: space-between; 
-            align-items: center; 
-            padding-bottom: 10px; 
+            align-items: flex-start; 
+            padding-bottom: 12px; 
             border-bottom: 4px dashed var(--wood-dark); 
+            gap: 10px;
         }
         #mg-progress-track { 
-            width: 100%; height: 14px; background: var(--wood-dark); 
-            border: 2px solid #2b2b2b; margin-top: 8px; padding: 2px; 
+            width: 100%; 
+            height: 20px; 
+            background: var(--wood-dark); 
+            border: 2px solid #2b2b2b; 
+            margin-top: 10px; 
+            padding: 2px; 
         }
         #mg-progress-bar { height: 100%; width: 100%; background: var(--danger); }
-        #mg-body-content { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 12px 0; }
+        #mg-body-content { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 16px 0; }
 
-        .mg-clock-engine { width: 70px; height: 70px; cursor: pointer; transition: transform 0.05s; }
+        /* M1: SUEÑO - Reloj gigante */
+        .mg-clock-engine { 
+            width: 110px; 
+            height: 110px; 
+            cursor: pointer; 
+            transition: transform 0.05s; 
+        }
 
+        /* M2: COLECTIVO - Vista de carrera más amplia */
         .mg-runner-track { 
-            width: 100%; height: 60px; background: var(--floor); 
+            width: 100%; 
+            height: 90px; 
+            background: var(--floor); 
             border: 3px solid var(--wood-dark); 
             position: relative; display: flex; align-items: center; overflow: hidden; 
         }
         .mg-runner-track::before { content: ''; position: absolute; left: 0; right: 0; height: 2px; border-top: 2px dashed rgba(0,0,0,0.15); }
         
-        .mg-runner-sprite { width: 44px; height: 50px; position: absolute; left: 0; transition: transform 0.05s ease-out; }
-        .mg-bus-station { width: 42px; height: 34px; position: absolute; right: 5px; }
+        .mg-runner-sprite { 
+            width: 54px;  
+            height: 62px; 
+            position: absolute; left: 0; transition: transform 0.05s ease-out; 
+        }
+        .mg-bus-station { 
+            width: 52px;  
+            height: 42px; 
+            position: absolute; right: 5px; 
+        }
 
-        .mg-tap-dual-layout { display: flex; gap: 8px; width: 100%; margin-top: 12px; }
+        .mg-tap-dual-layout { display: flex; gap: 8px; width: 100%; margin-top: 16px; }
         .mg-foot-btn { 
-            flex: 1; height: 50px; background: var(--floor); 
+            flex: 1; 
+            height: 65px; 
+            background: var(--floor); 
             border: 3px solid var(--wood-dark);
-            color: var(--text-main); font-weight: bold; font-size: 0.65rem; 
+            color: var(--text-main); font-weight: bold; 
+            font-size: 1rem; 
             box-shadow: inset -2px -2px 0px rgba(0,0,0,0.15);
         }
 
-        .mg-coin-viewport { width: 100%; height: 200px; background: var(--floor); border: 3px solid var(--wood-dark); position: relative; overflow: hidden; }
-        .mg-coin-item { width: 36px; height: 36px; position: absolute; cursor: pointer; }
+        /* M3: TRANSPORTE - Visor y monedas grandes */
+        .mg-coin-viewport { 
+            width: 100%; 
+            height: 250px; 
+            background: var(--floor); border: 3px solid var(--wood-dark); position: relative; overflow: hidden; 
+        }
+        .mg-coin-item { 
+            width: 48px;  
+            height: 48px; 
+            position: absolute; cursor: pointer; 
+        }
 
-        .mg-maze-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; width: 100%; max-width: 220px; }
-        .mg-maze-cell { height: 48px; display: flex; justify-content: center; align-items: center; font-size: 1rem; cursor: pointer; border: 2px solid var(--wood-dark); }
+        /* M4: TRABAJO - Laberinto grande */
+        .mg-maze-grid { 
+            display: grid; grid-template-columns: repeat(4, 1fr); 
+            gap: 6px; 
+            width: 100%; 
+            max-width: 280px; 
+        }
+        .mg-maze-cell { 
+            height: 60px; 
+            display: flex; justify-content: center; align-items: center; 
+            font-size: 1.6rem; 
+            cursor: pointer; border: 2px solid var(--wood-dark); 
+        }
         .mg-maze-cell.wall { background: var(--wood-dark); opacity: 0.8; }
         .mg-maze-cell.path { background: var(--floor); }
         .mg-maze-cell.player { background: #5a6c8f; }
         .mg-maze-cell.start { background: var(--floor); }
         .mg-maze-cell.end { background: var(--success); }
         
+        /* Final de partida */
         #screen-end { overflow-y: auto; display: block; }
         .results-mesh { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px; }
         .metric-card { background: var(--floor); border: 3px solid var(--wood-dark); padding: 10px; text-align: center; }
-        .metric-card-huge { font-size: 0.9rem; font-weight: bold; color: var(--text-main); }
+        .metric-card-huge { font-size: 1.1rem; font-weight: bold; color: var(--text-main); }
 
         .analytics-bar-row { margin-bottom: 8px; }
-        .analytics-flex-label { display: flex; justify-content: space-between; font-size: 0.45rem; margin-bottom: 4px; color: var(--wood-dark); font-weight: bold; }
+        .analytics-flex-label { display: flex; justify-content: space-between; font-size: 0.6rem; margin-bottom: 4px; color: var(--wood-dark); font-weight: bold; }
         .analytics-track-bar { height: 14px; background: #c5b68e; border: 2px solid var(--wood-dark); position: relative; }
         .bar-user-layer { height: 100%; background: #5d7096; position: absolute; left: 0; top: 0; z-index: 2; }
         .bar-real-layer { height: 100%; background: rgba(212, 92, 92, 0.5); border-right: 2px solid var(--danger); position: absolute; left: 0; top: 0; z-index: 1; }
 
         .survey-card-box { background: var(--floor); border: 3px solid var(--wood-dark); padding: 10px; margin: 12px 0; }
-        .survey-item-row { display: flex; align-items: center; gap: 6px; font-size: 0.45rem; color: var(--text-main); margin-top: 8px; cursor: pointer; text-align: left; line-height: 1.4; }
+        .survey-item-row { display: flex; align-items: center; gap: 6px; font-size: 0.6rem; color: var(--text-main); margin-top: 8px; cursor: pointer; text-align: left; line-height: 1.4; }
         .survey-item-row input { width: 14px; height: 14px; accent-color: var(--wood-dark); }
 
-        .floating-score-node { position: absolute; font-weight: bold; font-size: 0.55rem; color: var(--success); text-shadow: 1px 1px 0px #fff; animation: retroRise 0.5s forwards; pointer-events: none; z-index: 200; }
+        .floating-score-node { position: absolute; font-weight: bold; font-size: 0.7rem; color: var(--success); text-shadow: 1px 1px 0px #fff; animation: retroRise 0.5s forwards; pointer-events: none; z-index: 200; }
         @keyframes retroRise { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-15px); } }
     </style>
 </head>
@@ -348,68 +398,45 @@
 
     <!-- Bloques gráficos de Sprites Pixel Art -->
     <div style="display: none;">
-        <!-- ESTUDIANTE ESTILO RPG MAKER / YUME NIKKI CHIBI (Fiel a 1000207788.jpg) -->
+        <!-- ESTUDIANTE ESTILO RPG MAKER -->
         <svg id="asset-svg-student" viewBox="0 0 16 18">
-            <!-- Outline / Pelo Base Oscuro -->
             <rect x="4" y="1" width="8" height="1" fill="#2b1619"/>
             <rect x="3" y="2" width="10" height="1" fill="#2b1619"/>
             <rect x="2" y="3" width="12" height="5" fill="#2b1619"/>
-            
-            <!-- Rostro Base -->
             <rect x="3" y="5" width="10" height="4" fill="#fcd0bc"/>
-            
-            <!-- Textura de Cabello / Flequillo e iluminación -->
             <rect x="3" y="3" width="10" height="2" fill="#4a2529"/>
             <rect x="2" y="4" width="2" height="4" fill="#4a2529"/>
             <rect x="12" y="4" width="2" height="4" fill="#4a2529"/>
             <rect x="4" y="5" width="1" height="1" fill="#4a2529"/>
             <rect x="7" y="5" width="2" height="1" fill="#4a2529"/>
             <rect x="11" y="5" width="1" height="1" fill="#4a2529"/>
-            
-            <!-- Trenzas / Coletas Laterales -->
             <rect x="1" y="7" width="1" height="3" fill="#2b1619"/>
             <rect x="14" y="7" width="1" height="3" fill="#2b1619"/>
             <rect x="1" y="9" width="1" height="1" fill="#b22c38"/>
             <rect x="14" y="9" width="1" height="1" fill="#b22c38"/>
-
-            <!-- Ojos Cerrados Lineales -->
             <rect x="4" y="7" width="2" height="1" fill="#2b1619"/>
             <rect x="10" y="7" width="2" height="1" fill="#2b1619"/>
-            
-            <!-- Sonrojo Sutil -->
             <rect x="3" y="8" width="1" height="1" fill="#e09c84"/>
             <rect x="12" y="8" width="1" height="1" fill="#e09c84"/>
-
-            <!-- Cuello / Sombra -->
             <rect x="7" y="9" width="2" height="1" fill="#2b1619"/>
-
-            <!-- Abrigo / Ropa (Suéter Rojo con Estampa central) -->
             <rect x="3" y="10" width="10" height="4" fill="#c84c4c"/>
             <rect x="2" y="10" width="1" height="3" fill="#c84c4c"/>
             <rect x="13" y="10" width="1" height="3" fill="#c84c4c"/>
             <rect x="7" y="11" width="2" height="2" fill="#f8f4e6"/>
             <rect x="6" y="12" width="4" height="1" fill="#2b1619"/>
-
-            <!-- Manos -->
             <rect x="2" y="13" width="1" height="1" fill="#fcd0bc"/>
             <rect x="13" y="13" width="1" height="1" fill="#fcd0bc"/>
-
-            <!-- Falda Oscura -->
             <rect x="3" y="14" width="10" height="2" fill="#492532"/>
-            
-            <!-- Botas / Pies -->
             <rect x="4" y="16" width="3" height="2" fill="#b22c38"/>
             <rect x="9" y="16" width="3" height="2" fill="#b22c38"/>
             <rect x="4" y="16" width="3" height="1" fill="#d64d56"/>
             <rect x="9" y="16" width="3" height="1" fill="#d64d56"/>
         </svg>
 
-        <!-- Banco vacío indicador -->
         <svg id="asset-svg-empty" viewBox="0 0 16 16">
             <path d="M3 3 L13 13 M13 3 L3 13" stroke="#d45c5c" stroke-width="2" opacity="0.5"/>
         </svg>
 
-        <!-- Despertador Pixel -->
         <svg id="asset-svg-clock" viewBox="0 0 16 16">
             <rect x="3" y="3" width="10" height="10" fill="#d45c5c"/>
             <rect x="5" y="5" width="6" height="6" fill="#fff8e1"/>
@@ -420,43 +447,31 @@
 
         <!-- COLECTIVO URBANO TRADICIONAL PIXEL ART -->
         <svg id="asset-svg-bus" viewBox="0 0 22 16">
-            <!-- Chasis Base Sombra -->
             <rect x="1" y="2" width="20" height="11" fill="#1a2536"/>
-            <!-- Techo Blanco -->
             <rect x="2" y="3" width="18" height="5" fill="#f0f4f8"/>
-            <!-- Carrocería Color Principal (Azul) -->
             <rect x="2" y="8" width="18" height="4" fill="#3a86c8"/>
-            <!-- Franja Roja Divisoria Fina -->
             <rect x="2" y="7" width="18" height="1" fill="#de4c4c"/>
-            <!-- Ventanillas de Pasajeros -->
             <rect x="4" y="4" width="3" height="2" fill="#70b5e8"/>
             <rect x="8" y="4" width="3" height="2" fill="#70b5e8"/>
             <rect x="12" y="4" width="3" height="2" fill="#70b5e8"/>
-            <!-- Parabrisas Delantero -->
             <rect x="16" y="4" width="3" height="3" fill="#4095d8"/>
-            <!-- Ruedas Traseras/Delanteras -->
             <rect x="4" y="12" width="4" height="3" fill="#222222"/>
             <rect x="14" y="12" width="4" height="3" fill="#222222"/>
             <rect x="5" y="13" width="2" height="1" fill="#bcbcbc"/>
             <rect x="15" y="13" width="2" height="1" fill="#bcbcbc"/>
-            <!-- Detalles Luces -->
             <rect x="20" y="9" width="1" height="1" fill="#ffeb3b"/>
             <rect x="1" y="9" width="1" height="1" fill="#ff5722"/>
         </svg>
 
         <!-- MONEDA DETALLADA PIXEL ART -->
         <svg id="asset-svg-coin" viewBox="0 0 16 16">
-            <!-- Borde Sombreado Externo -->
             <rect x="4" y="0" width="8" height="16" fill="#b57a1d"/>
             <rect x="2" y="2" width="12" height="12" fill="#b57a1d"/>
             <rect x="0" y="4" width="16" height="8" fill="#b57a1d"/>
-            <!-- Cuerpo Dorado Base -->
             <rect x="5" y="1" width="6" height="14" fill="#d6a244"/>
             <rect x="2" y="4" width="12" height="8" fill="#d6a244"/>
-            <!-- Centro con Brillo Metálico -->
             <rect x="5" y="2" width="6" height="12" fill="#ffe082"/>
             <rect x="4" y="4" width="8" height="8" fill="#ffe082"/>
-            <!-- Relieve Interno Numérico o Símbolo -->
             <rect x="7" y="4" width="2" height="8" fill="#fff8e1"/>
             <rect x="6" y="6" width="4" height="2" fill="#fff8e1"/>
         </svg>
@@ -466,19 +481,19 @@
     <div id="screen-intro" class="screen">
         <div style="width:100%">
             <h1>1 DE 2</h1>
-            <p style="color: var(--wood-dark); font-weight: bold; margin-bottom: 0; font-size: 0.55rem;">¿Podrás sostener el aula?</p>
+            <p style="color: var(--wood-dark); font-weight: bold; margin-bottom: 0; font-size: 0.65rem;">¿Podrás sostener el aula?</p>
         </div>
         
         <div class="intro-hero-art" id="vector-avatar-pool"></div>
 
         <div class="stat-banner">
             <div class="stat-huge">51%</div>
-            <p style="color: var(--text-main); font-size: 0.45rem; margin-bottom: 0; font-weight: bold; line-height: 1.4;">De los estudiantes de secundaria en Argentina acumuló 15 o más inasistencias.</p>
-            <p style="font-size: 0.35rem; color: #6b7da3; margin-top: 6px; font-weight: bold;">Informe Argentinos por la Educación, 2026</p>
+            <p style="color: var(--text-main); font-size: 0.55rem; margin-bottom: 0; font-weight: bold; line-height: 1.4;">De los estudiantes de secundaria en Argentina acumuló 15 o más inasistencias.</p>
+            <p style="font-size: 0.45rem; color: #6b7da3; margin-top: 6px; font-weight: bold;">Informe Argentinos por la Educación, 2026</p>
         </div>
 
         <div style="width:100%">
-            <p style="font-size: 0.45rem; margin-bottom: 14px; line-height: 1.4;">Asume el mando del curso. Resuelve las alertas antes de que dejen sus bancos vacíos. ¡Pierdes si quedan 4 o menos!</p>
+            <p style="font-size: 0.55rem; margin-bottom: 14px; line-height: 1.4;">Asume el mando del curso. Resuelve las alertas antes de que dejen sus bancos vacíos. ¡Pierdes si el aula se queda completamente vacía!</p>
             <button class="btn" onclick="Game.start()">INICIAR CICLO</button>
         </div>
     </div>
@@ -495,51 +510,52 @@
         <div id="classroom-mesh"></div>
     </div>
 
-    <!-- INTERFAZ MODAL DE MINIJUEGOS (MENÚ RPG) -->
+    <!-- INTERFAZ MODAL DE MINIJUEGOS (CUADRO DE PUNTOS REDUCIDO Y OPTIMIZADO) -->
     <div id="minigame-portal" class="hidden">
         <div id="mg-header">
-            <div>
-                <h3 id="mg-title" style="font-size: 0.55rem; font-weight: bold; margin:0; color: var(--wood-dark);">ALERTA</h3>
-                <p id="mg-desc" style="font-size: 0.45rem; color: #5b4632; margin: 6px 0 0 0; text-align: left; line-height: 1.3;"></p>
+            <div style="flex: 1; padding-right: 4px;">
+                <h3 id="mg-title" style="font-size: 1.05rem; font-weight: bold; margin:0; color: var(--wood-dark);">ALERTA</h3>
+                <p id="mg-desc" style="font-size: 0.8rem; color: #5b4632; margin: 6px 0 0 0; text-align: left; line-height: 1.4;"></p>
             </div>
-            <div>
-                <span id="mg-points-badge" style="background: var(--floor); border: 2px solid var(--wood-dark); padding: 4px; font-size: 0.4rem; font-weight: bold; color: var(--success);">+150 PTS</span>
+            <div style="flex-shrink: 0; margin-top: 2px;">
+                <!-- Cuadro de puntos optimizado: Más chico, no tapa el texto lateral -->
+                <span id="mg-points-badge" style="background: var(--floor); border: 2px solid var(--wood-dark); padding: 4px 6px; font-size: 0.55rem; font-weight: bold; color: var(--success); white-space: nowrap; display: inline-block;">+150 PTS</span>
             </div>
         </div>
         <div id="mg-progress-track"><div id="mg-progress-bar"></div></div>
         <div id="mg-body-content"></div>
-        <p style="font-size: 0.45rem; color: var(--danger); margin:0; font-weight: bold;">¡El tiempo del aula no se detiene!</p>
+        <p style="font-size: 0.75rem; color: var(--danger); margin:0; font-weight: bold; text-align: center;">¡El tiempo del aula no se detiene!</p>
     </div>
 
     <!-- PANTALLA 3: FIN DE PARTIDA -->
     <div id="screen-end" class="screen hidden">
-        <h2 style="color: var(--danger); font-size: 1.1rem; font-weight: bold; text-shadow: 1px 1px 0px var(--frame);">AULA DESIERTA</h2>
-        <p style="font-size: 0.5rem; margin-bottom: 12px; font-weight: bold;">El nivel de deserción superó el límite crítico.</p>
+        <h2 style="color: var(--danger); font-size: 1.3rem; font-weight: bold; text-shadow: 1px 1px 0px var(--frame);">AULA DESIERTA</h2>
+        <p style="font-size: 0.65rem; margin-bottom: 12px; font-weight: bold;">El nivel de deserción fue absoluto. No quedan alumnos.</p>
 
         <div class="results-mesh">
             <div class="metric-card">
                 <div class="metric-card-huge" id="res-score">0</div>
-                <div style="font-size: 0.4rem; color: var(--wood-dark); margin-top: 4px; font-weight: bold;">Puntaje</div>
+                <div style="font-size: 0.55rem; color: var(--wood-dark); margin-top: 4px; font-weight: bold;">Puntaje</div>
             </div>
             <div class="metric-card">
                 <div class="metric-card-huge" id="res-highscore" style="color: var(--warning);">0</div>
-                <div style="font-size: 0.4rem; color: var(--wood-dark); margin-top: 4px; font-weight: bold;">Récord</div>
+                <div style="font-size: 0.55rem; color: var(--wood-dark); margin-top: 4px; font-weight: bold;">Récord</div>
             </div>
             <div class="metric-card">
                 <div class="metric-card-huge" id="res-level" style="color: #4a548c;">1</div>
-                <div style="font-size: 0.4rem; color: var(--wood-dark); margin-top: 4px; font-weight: bold;">Semana</div>
+                <div style="font-size: 0.55rem; color: var(--wood-dark); margin-top: 4px; font-weight: bold;">Semana</div>
             </div>
             <div class="metric-card">
                 <div class="metric-card-huge" id="res-saved" style="color: var(--success);">0</div>
-                <div style="font-size: 0.4rem; color: var(--wood-dark); margin-top: 4px; font-weight: bold;">Retenidos</div>
+                <div style="font-size: 0.55rem; color: var(--wood-dark); margin-top: 4px; font-weight: bold;">Retenidos</div>
             </div>
         </div>
 
-        <h3 style="font-size: 0.45rem; font-weight: bold; margin-bottom: 8px; border-bottom: 2px dashed var(--wood-dark); padding-bottom: 4px; text-align: left; color: var(--wood-dark);">Tus Pérdidas vs Realidad</h3>
+        <h3 style="font-size: 0.6rem; font-weight: bold; margin-bottom: 8px; border-bottom: 2px dashed var(--wood-dark); padding-bottom: 4px; text-align: left; color: var(--wood-dark);">Tus Pérdidas vs Realidad</h3>
         <div id="dashboard-chart-root"></div>
 
         <div class="survey-card-box">
-            <h4 style="font-size: 0.45rem; font-weight: bold; margin:0; color: var(--wood-dark); text-align: left;">¿Viviste esto en la escuela?</h4>
+            <h4 style="font-size: 0.6rem; font-weight: bold; margin:0; color: var(--wood-dark); text-align: left;">¿Viviste esto en la escuela?</h4>
             <div class="survey-options">
                 <label class="survey-item-row"><input type="checkbox" name="survey" value="SUEÑO"> Inasistencia por desgano / sueño</label>
                 <label class="survey-item-row"><input type="checkbox" name="survey" value="COLECTIVO"> Frecuencia o paro de transporte</label>
@@ -653,7 +669,7 @@
 
             if (this.survivalBonusTracker >= 10) {
                 this.survivalBonusTracker = 0;
-                if (this.studentsCount >= 8) {
+                if (this.studentsCount > 0) {
                     let passivePoints = 100 * this.currentLevel;
                     this.score += passivePoints;
                     this.showFloatingEffect(document.getElementById('hud-score'), `+${passivePoints}`);
@@ -683,7 +699,7 @@
 
             this.syncHUDDisplay();
 
-            if (this.studentsCount <= 4) {
+            if (this.studentsCount === 0) {
                 this.triggerEndgameEvaluationSummary();
             }
 
@@ -709,8 +725,6 @@
             targetDesk.triggeredAt = this.gameTime;
 
             targetDesk.element.className = 'desk-node at_risk';
-            
-            // Inserción directa de texto plano solicitado
             targetDesk.tagElement.innerText = config.label;
         },
 
@@ -802,7 +816,7 @@
                 clickFrame.appendChild(svgClock);
 
                 const feedbackCounterText = document.createElement('div');
-                feedbackCounterText.style.cssText = 'font-weight:bold; margin-top:14px; font-size:0.5rem; color:var(--text-main);';
+                feedbackCounterText.style.cssText = 'font-weight:bold; margin-top:18px; font-size:0.95rem; color:var(--text-main);';
                 feedbackCounterText.innerText = `TAPS: 0 / ${amg.memoryData.targetRequired}`;
 
                 clickFrame.addEventListener('click', () => {
@@ -854,7 +868,7 @@
                         amg.memoryData.runningDistance += effortStepFactor;
                         
                         let trackWidth = canvasTrack.clientWidth || 320; 
-                        let widthBoundaryMax = Math.max(100, trackWidth - 50);
+                        let widthBoundaryMax = Math.max(100, trackWidth - 65); 
                         let updatedLeftPx = (amg.memoryData.runningDistance / 100) * widthBoundaryMax;
                         
                         runnerNode.style.transform = `translateX(${Math.min(widthBoundaryMax, Math.max(0, updatedLeftPx))}px)`;
@@ -905,9 +919,9 @@
                     coinElement.appendChild(cSvg);
 
                     let w = viewportBoard.clientWidth || 340;
-                    let h = viewportBoard.clientHeight || 200;
-                    let placementX = Math.random() * (w - 40);
-                    let placementY = Math.random() * (h - 40);
+                    let h = viewportBoard.clientHeight || 250;
+                    let placementX = Math.random() * (w - 52); 
+                    let placementY = Math.random() * (h - 52);
                     coinElement.style.left = `${Math.max(0, placementX)}px`;
                     coinElement.style.top = `${Math.max(0, placementY)}px`;
 
