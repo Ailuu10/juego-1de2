@@ -3,30 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>1 de 2 - RPG Character Edition</title>
-    <!-- Fuente Retro Pixel Art -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>1 de 2 - Aula S.O.S (Estilo Chibi)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=DynaPuff:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-main: #4c4b68;
-            --wall: #e5d7a7;
-            --floor: #d8c9a1;
-
-            --wood: #b98657;
-            --wood-dark: #7a5537;
-
-            --frame: #e8d39d;
-            --frame-dark: #a88a4f;
-
-            --desk: #c98f5a;
-            --desk-dark: #8d6038;
-
-            --danger: #d45c5c;
-            --warning: #d6a244;
-            --success: #5fa46d;
-
-            --text-main: #2b2b2b;
-            --text-light: #f8f4e6;
+            --bg-main: #6c5ce7;
+            --wall: #fff9e6;
+            --floor: #ffda79;
+            --wood: #ff7675;
+            --wood-dark: #b83b3b;
+            --frame: #ffeaa7;
+            --desk: #ffbe76;
+            --danger: #ff4757;
+            --warning: #ffa502;
+            --success: #2ed573;
+            --text-main: #2f3542;
+            --text-light: #ffffff;
+            --ui-outline: #2f3542; 
         }
 
         html, body {
@@ -34,7 +27,8 @@
             width: 100%;
             margin: 0;
             padding: 0;
-            background: #2f2e41;
+            background: #4b3bb3;
+            overflow: hidden;
         }
 
         * {
@@ -42,20 +36,16 @@
             user-select: none;
             -webkit-user-select: none;
             touch-action: manipulation;
-            font-family: 'Press Start 2P', cursive, monospace;
-            image-rendering: pixelated;
-            border-radius: 0 !important;
+            font-family: 'DynaPuff', sans-serif;
         }
 
         body {
             color: var(--text-main);
-            font-size: 13px; 
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             min-height: 100dvh;
-            overflow: hidden;
             background: var(--bg-main);
         }
 
@@ -69,16 +59,14 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border: 8px solid var(--frame);
-            box-shadow:
-                inset 0 0 0 3px var(--frame-dark),
-                0 0 0 4px #3b3a55;
+            border: 5px solid var(--ui-outline);
+            border-radius: 32px;
+            box-shadow: 0 14px 0px rgba(0, 0, 0, 0.15);
         }
 
         @media (min-width: 460px) and (min-height: 750px) {
             #game-container {
-                height: 94vh;
-                height: 94dvh;
+                height: 92vh;
                 max-height: 860px;
             }
         }
@@ -87,422 +75,389 @@
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             display: flex; flex-direction: column;
-            padding: 16px; z-index: 10;
+            padding: 20px; z-index: 10;
             background: var(--wall);
         }
 
         .hidden { display: none !important; }
 
+        h1, h2, h3, .btn {
+            font-family: 'Lilita One', sans-serif;
+        }
+
         h1 { 
-            font-size: 2.2rem; 
-            font-weight: bold; 
+            font-size: 3.5rem; 
             text-align: center; 
-            color: var(--wood-dark);
-            margin: 15px 0 5px 0; 
-            text-shadow: 2px 2px 0px var(--frame);
+            color: #ff4757;
+            margin: 5px 0; 
+            -webkit-text-stroke: 2px var(--ui-outline);
+            text-shadow: 0 5px 0px var(--ui-outline);
+            letter-spacing: 1px;
         }
         
         h2 { 
-            font-size: 1.3rem; 
-            font-weight: bold; 
+            font-size: 2.2rem; 
             text-align: center; 
             margin-bottom: 14px; 
             color: var(--danger); 
         }
         
         p { 
-            font-size: 0.8rem; 
-            line-height: 1.6; 
+            font-size: 0.95rem; 
+            line-height: 1.5; 
             color: var(--text-main); 
             margin-bottom: 16px; 
             text-align: center;
+            font-weight: 500;
         }
         
         .btn {
             background: var(--wood);
             color: var(--text-light); 
-            border: 4px solid var(--wood-dark); 
+            border: 3.5px solid var(--ui-outline); 
+            border-radius: 20px;
             padding: 14px;
-            font-size: 0.85rem; 
-            font-weight: bold;
+            font-size: 1.5rem; 
             cursor: pointer; 
             width: 100%; 
             text-align: center;
-            box-shadow: 
-                inset -3px -3px 0px rgba(0,0,0,0.2), 
-                inset 3px 3px 0px rgba(255,255,255,0.2);
+            box-shadow: 0 5px 0px var(--wood-dark);
+            transition: transform 0.05s, box-shadow 0.05s;
+            position: relative;
+            top: 0;
         }
         .btn:active { 
-            box-shadow: inset 3px 3px 0px rgba(0,0,0,0.4);
-            transform: scale(0.98); 
+            transform: translateY(4px);
+            box-shadow: 0 1px 0px var(--wood-dark);
         }
 
-        #screen-intro { justify-content: space-between; align-items: center; padding: 20px 16px; }
-        .intro-hero-art { width: 100%; display: flex; justify-content: center; gap: 16px; margin: 15px 0; }
-        .intro-hero-art svg { width: 56px; height: 63px; }
+        #screen-intro { justify-content: space-between; align-items: center; padding: 24px 20px; }
+        .intro-hero-art { width: 100%; display: flex; justify-content: center; gap: 12px; margin: 15px 0; }
+        .intro-hero-art svg { width: 75px; height: 75px; filter: drop-shadow(0 4px 0px rgba(0,0,0,0.06)); }
         
         .stat-banner {
-            background: var(--floor);
-            border: 4px solid var(--wood-dark);
-            padding: 14px; 
+            background: #fff;
+            border: 3.5px solid var(--ui-outline);
+            border-radius: 24px;
+            padding: 16px; 
             text-align: center;
             width: 100%;
-            box-shadow: inset 0 0 0 2px #fff3c7;
+            box-shadow: 0 6px 0px rgba(0,0,0,0.04);
         }
         .stat-huge { 
-            font-size: 2.5rem; 
-            font-weight: bold; 
+            font-family: 'Lilita One', sans-serif;
+            font-size: 3.5rem; 
             color: var(--danger); 
-            margin-bottom: 8px; 
+            margin-bottom: 4px; 
+            -webkit-text-stroke: 1px var(--ui-outline);
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
         }
 
         #hud {
-            background: var(--wall);
-            border: 4px solid var(--wood-dark);
-            box-shadow: inset 0 0 0 2px #fff3c7;
-            padding: 12px;
+            background: #ffffff;
+            border: 3.5px solid var(--ui-outline);
+            border-radius: 20px;
+            box-shadow: 0 5px 0px rgba(0,0,0,0.06);
+            padding: 10px 12px;
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
-            gap: 4px;
-            margin-bottom: 10px;
+            gap: 6px;
+            margin-bottom: 12px;
         }
         .hud-metric { 
             text-align: center; 
-            font-size: 0.6rem; 
-            color: #5b4632; 
-            font-weight: bold; 
+            font-size: 0.75rem; 
+            color: #747d8c; 
+            font-weight: 700; 
         }
         .hud-val { 
-            font-size: 0.85rem; 
-            font-weight: bold; 
+            font-family: 'Lilita One', sans-serif;
+            font-size: 1.3rem; 
             color: var(--text-main); 
             display: block; 
-            margin-top: 6px; 
+            margin-top: 2px; 
         }
-        #hud-level { color: #4a548c; }
 
         #classroom-mesh {
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
             grid-template-rows: repeat(4, 1fr);
-            gap: 8px; 
+            gap: 10px; 
             flex-grow: 1; 
             margin-bottom: 4px;
-            background:
-                repeating-linear-gradient(
-                    0deg,
-                    #d8c9a1 0px,
-                    #d8c9a1 24px,
-                    #cdbd93 24px,
-                    #cdbd93 26px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    transparent 0px,
-                    transparent 24px,
-                    #cdbd93 24px,
-                    #cdbd93 26px
-                );
-            padding: 12px;
-            border: 4px solid var(--wood-dark);
+            background: #ffeaa7;
+            padding: 14px;
+            border: 3.5px solid var(--ui-outline);
+            border-radius: 24px;
         }
 
         .desk-node {
             background: var(--desk);
-            border: 3px solid var(--desk-dark);
+            border: 3.5px solid var(--ui-outline);
+            border-radius: 18px;
             position: relative;
             display: flex; 
             justify-content: center; 
             align-items: center;
-            box-shadow:
-                inset -3px -3px 0 rgba(0,0,0,.15),
-                inset 3px 3px 0 rgba(255,255,255,.15);
-            will-change: transform;
+            box-shadow: 0 4px 0px rgba(0,0,0,0.1);
+            will-change: transform, background-color;
         }
-
         .desk-node .sprite-wrap { 
-            width: 85%; 
-            height: 85%; 
+            width: 92%; 
+            height: 92%; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
-            image-rendering: pixelated;
         }
         .desk-node .sprite-wrap svg { width: 100%; height: 100%; }
 
         .alert-indicator-tag {
             position: absolute; 
-            top: -22px; left: 50%; transform: translateX(-50%);
-            background: #fff8e1;
+            top: -24px; left: 50%; transform: translateX(-50%);
+            background: #fff;
             color: var(--text-main);
-            border: 2px solid #444;
-            padding: 4px 6px; 
+            border: 2.5px solid var(--ui-outline);
+            border-radius: 12px;
+            padding: 2px 8px; 
             display: none; 
             z-index: 20; 
-            width: auto;
-            max-width: 105px; 
-            height: auto;
             white-space: nowrap;
-            font-size: 6.5px; 
-            font-weight: bold;
-            box-shadow: 2px 2px 0px rgba(0,0,0,0.15);
-            text-align: center;
+            font-size: 0.65rem; 
+            font-weight: 700;
+            box-shadow: 0 3px 0px var(--ui-outline);
         }
         .alert-indicator-tag::after {
             content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
-            border-width: 3px 3px 0; border-style: solid; border-color: #fff8e1 transparent; display: block; width: 0;
+            border-width: 4px 4px 0; border-style: solid; border-color: #fff transparent; display: block; width: 0;
         }
 
-        .desk-node.at_risk { border-color: var(--warning); }
+        .desk-node.at_risk { border-color: var(--warning); background: #ffcb74; }
         .desk-node.at_risk .alert-indicator-tag { display: block; }
         
-        .desk-node.critical { border-color: var(--danger); animation: retroBlink 0.4s infinite steps(2); }
+        .desk-node.critical { border-color: var(--danger); background: #ff7675; animation: cartoonBlink 0.4s infinite alternate ease-in-out; }
         .desk-node.critical .alert-indicator-tag { display: block; background: #ffdadb; }
         .desk-node.critical .alert-indicator-tag::after { border-color: #ffdadb transparent; }
 
-        .desk-node.leaving .sprite-wrap svg { transform: scale(0); opacity: 0; }
+        .desk-node.leaving .sprite-wrap svg { transform: scale(0); opacity: 0; transition: all 0.2s ease; }
         .desk-node.empty { 
-            background: rgba(0,0,0,0.1); 
-            border: 3px dashed rgba(0,0,0,0.15); 
+            background: rgba(0,0,0,0.06); 
+            border: 3.5px dashed rgba(0,0,0,0.15); 
             box-shadow: none;
         }
 
-        @keyframes retroBlink { from { opacity: 1; } to { opacity: 0.6; } }
+        @keyframes cartoonBlink { from { transform: scale(1); } to { transform: scale(0.95); } }
 
-        /* ========================================================
-           INTERFAZ DE MINIJUEGOS ENLARGECIDA
-           ======================================================== */
+        /* MODAL MINIJUEGOS */
         #minigame-portal {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--wall); 
             color: var(--text-main);
             z-index: 100;
             display: flex; flex-direction: column; 
-            padding: 24px 18px; 
+            padding: 24px 20px; 
             justify-content: space-between;
-            border: 6px double var(--frame-dark);
+            border: 5px solid var(--ui-outline);
+            border-radius: 26px;
         }
         #mg-header { 
             display: flex; 
             justify-content: space-between; 
             align-items: flex-start; 
-            padding-bottom: 12px; 
-            border-bottom: 4px dashed var(--wood-dark); 
+            padding-bottom: 14px; 
+            border-bottom: 3px dashed #ced6e0; 
             gap: 10px;
         }
         #mg-progress-track { 
-            width: 100%; 
-            height: 20px; 
-            background: var(--wood-dark); 
-            border: 2px solid #2b2b2b; 
-            margin-top: 10px; 
-            padding: 2px; 
+            width: 100%; height: 20px; background: #e4e7eb; 
+            border: 3.5px solid var(--ui-outline); border-radius: 12px;
+            margin-top: 12px; overflow: hidden;
         }
-        #mg-progress-bar { height: 100%; width: 100%; background: var(--danger); }
-        #mg-body-content { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 16px 0; }
+        #mg-progress-bar { height: 100%; width: 100%; background: var(--danger); transition: width 0.1s linear; }
+        #mg-body-content { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 18px 0; }
 
-        /* M1: SUEÑO - Reloj gigante */
-        .mg-clock-engine { 
-            width: 110px; 
-            height: 110px; 
-            cursor: pointer; 
-            transition: transform 0.05s; 
-        }
-
-        /* M2: COLECTIVO - Vista de carrera más amplia */
+        /* MINI-MECÁNICAS */
+        .mg-clock-engine { width: 130px; height: 130px; cursor: pointer; transition: transform 0.05s; }
         .mg-runner-track { 
-            width: 100%; 
-            height: 90px; 
-            background: var(--floor); 
-            border: 3px solid var(--wood-dark); 
+            width: 100%; height: 100px; background: #fff; border: 3.5px solid var(--ui-outline); border-radius: 18px;
             position: relative; display: flex; align-items: center; overflow: hidden; 
         }
-        .mg-runner-track::before { content: ''; position: absolute; left: 0; right: 0; height: 2px; border-top: 2px dashed rgba(0,0,0,0.15); }
-        
-        .mg-runner-sprite { 
-            width: 54px;  
-            height: 62px; 
-            position: absolute; left: 0; transition: transform 0.05s ease-out; 
-        }
-        .mg-bus-station { 
-            width: 52px;  
-            height: 42px; 
-            position: absolute; right: 5px; 
-        }
+        .mg-runner-track::before { content: ''; position: absolute; left: 0; right: 0; height: 4px; border-top: 3px dashed #ced6e0; }
+        .mg-runner-sprite { width: 68px; height: 68px; position: absolute; left: 0; transition: transform 0.08s ease-out; }
+        .mg-bus-station { width: 68px; height: 68px; position: absolute; right: 8px; }
+        .mg-tap-dual-layout { display: flex; gap: 10px; width: 100%; margin-top: 16px; }
+        .mg-foot-btn { flex: 1; height: 65px; background: #ffda79; border: 3.5px solid var(--ui-outline); border-radius: 16px !important; color: var(--text-main); box-shadow: 0 4px 0px #ccae52; }
+        .mg-foot-btn:active { transform: translateY(3px); box-shadow: 0 1px 0px #ccae52; }
 
-        .mg-tap-dual-layout { display: flex; gap: 8px; width: 100%; margin-top: 16px; }
-        .mg-foot-btn { 
-            flex: 1; 
-            height: 65px; 
-            background: var(--floor); 
-            border: 3px solid var(--wood-dark);
-            color: var(--text-main); font-weight: bold; 
-            font-size: 1rem; 
-            box-shadow: inset -2px -2px 0px rgba(0,0,0,0.15);
-        }
+        .mg-coin-viewport { width: 100%; height: 230px; background: #fff; border: 3.5px solid var(--ui-outline); border-radius: 20px; position: relative; overflow: hidden; }
+        .mg-coin-item { width: 52px; height: 52px; position: absolute; cursor: pointer; }
 
-        /* M3: TRANSPORTE - Visor y monedas grandes */
-        .mg-coin-viewport { 
-            width: 100%; 
-            height: 250px; 
-            background: var(--floor); border: 3px solid var(--wood-dark); position: relative; overflow: hidden; 
-        }
-        .mg-coin-item { 
-            width: 48px;  
-            height: 48px; 
-            position: absolute; cursor: pointer; 
-        }
-
-        /* M4: TRABAJO - Laberinto grande */
-        .mg-maze-grid { 
-            display: grid; grid-template-columns: repeat(4, 1fr); 
-            gap: 6px; 
-            width: 100%; 
-            max-width: 280px; 
-        }
+        .mg-maze-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; max-width: 290px; }
         .mg-maze-cell { 
-            height: 60px; 
-            display: flex; justify-content: center; align-items: center; 
-            font-size: 1.6rem; 
-            cursor: pointer; border: 2px solid var(--wood-dark); 
+            height: 64px; display: flex; justify-content: center; align-items: center; font-size: 1.8rem; 
+            cursor: pointer; border: 2.5px solid var(--ui-outline); border-radius: 12px;
         }
-        .mg-maze-cell.wall { background: var(--wood-dark); opacity: 0.8; }
-        .mg-maze-cell.path { background: var(--floor); }
-        .mg-maze-cell.player { background: #5a6c8f; }
-        .mg-maze-cell.start { background: var(--floor); }
+        .mg-maze-cell.wall { background: #747d8c; }
+        .mg-maze-cell.path { background: #f1f2f6; }
+        .mg-maze-cell.player { background: #54a0ff; }
+        .mg-maze-cell.start { background: #ffeaa7; }
         .mg-maze-cell.end { background: var(--success); }
         
-        /* Final de partida */
+        /* PANTALLA FIN */
         #screen-end { overflow-y: auto; display: block; }
-        .results-mesh { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px; }
-        .metric-card { background: var(--floor); border: 3px solid var(--wood-dark); padding: 10px; text-align: center; }
-        .metric-card-huge { font-size: 1.1rem; font-weight: bold; color: var(--text-main); }
+        .results-mesh { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+        .metric-card { background: #fff; border: 3.5px solid var(--ui-outline); border-radius: 18px; padding: 12px; text-align: center; }
+        .metric-card-huge { font-family: 'Lilita One', sans-serif; font-size: 2rem; color: var(--text-main); }
 
-        .analytics-bar-row { margin-bottom: 8px; }
-        .analytics-flex-label { display: flex; justify-content: space-between; font-size: 0.6rem; margin-bottom: 4px; color: var(--wood-dark); font-weight: bold; }
-        .analytics-track-bar { height: 14px; background: #c5b68e; border: 2px solid var(--wood-dark); position: relative; }
-        .bar-user-layer { height: 100%; background: #5d7096; position: absolute; left: 0; top: 0; z-index: 2; }
-        .bar-real-layer { height: 100%; background: rgba(212, 92, 92, 0.5); border-right: 2px solid var(--danger); position: absolute; left: 0; top: 0; z-index: 1; }
+        .analytics-bar-row { margin-bottom: 10px; }
+        .analytics-flex-label { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 6px; font-weight: 700; }
+        .analytics-track-bar { height: 18px; background: #e4e7eb; border: 2.5px solid var(--ui-outline); border-radius: 10px; position: relative; overflow: hidden; }
+        .bar-user-layer { height: 100%; background: #54a0ff; position: absolute; left: 0; top: 0; z-index: 2; }
+        .bar-real-layer { height: 100%; background: rgba(255, 71, 87, 0.4); border-right: 2.5px solid var(--danger); position: absolute; left: 0; top: 0; z-index: 1; }
 
-        .survey-card-box { background: var(--floor); border: 3px solid var(--wood-dark); padding: 10px; margin: 12px 0; }
-        .survey-item-row { display: flex; align-items: center; gap: 6px; font-size: 0.6rem; color: var(--text-main); margin-top: 8px; cursor: pointer; text-align: left; line-height: 1.4; }
-        .survey-item-row input { width: 14px; height: 14px; accent-color: var(--wood-dark); }
+        .survey-card-box { background: #fff; border: 3.5px solid var(--ui-outline); border-radius: 20px; padding: 14px; margin: 14px 0; }
+        .survey-item-row { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; margin-top: 10px; cursor: pointer; text-align: left; font-weight: 700; }
+        .survey-item-row input { width: 18px; height: 18px; accent-color: var(--ui-outline); }
 
-        .floating-score-node { position: absolute; font-weight: bold; font-size: 0.7rem; color: var(--success); text-shadow: 1px 1px 0px #fff; animation: retroRise 0.5s forwards; pointer-events: none; z-index: 200; }
-        @keyframes retroRise { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-15px); } }
+        .floating-score-node { font-family: 'Lilita One', sans-serif; position: absolute; font-size: 1.4rem; color: var(--success); -webkit-text-stroke: 1px #fff; text-shadow: 2px 2px 0px var(--ui-outline); animation: cartoonRise 0.6s forwards ease-out; pointer-events: none; z-index: 200; }
+        @keyframes cartoonRise { from { opacity: 1; transform: translateY(0) scale(0.8); } to { opacity: 0; transform: translateY(-35px) scale(1.2); } }
     </style>
 </head>
 <body>
 
 <div id="game-container">
 
-    <!-- Bloques gráficos de Sprites Pixel Art -->
     <div style="display: none;">
-        <!-- ESTUDIANTE ESTILO RPG MAKER -->
-        <svg id="asset-svg-student" viewBox="0 0 16 18">
-            <rect x="4" y="1" width="8" height="1" fill="#2b1619"/>
-            <rect x="3" y="2" width="10" height="1" fill="#2b1619"/>
-            <rect x="2" y="3" width="12" height="5" fill="#2b1619"/>
-            <rect x="3" y="5" width="10" height="4" fill="#fcd0bc"/>
-            <rect x="3" y="3" width="10" height="2" fill="#4a2529"/>
-            <rect x="2" y="4" width="2" height="4" fill="#4a2529"/>
-            <rect x="12" y="4" width="2" height="4" fill="#4a2529"/>
-            <rect x="4" y="5" width="1" height="1" fill="#4a2529"/>
-            <rect x="7" y="5" width="2" height="1" fill="#4a2529"/>
-            <rect x="11" y="5" width="1" height="1" fill="#4a2529"/>
-            <rect x="1" y="7" width="1" height="3" fill="#2b1619"/>
-            <rect x="14" y="7" width="1" height="3" fill="#2b1619"/>
-            <rect x="1" y="9" width="1" height="1" fill="#b22c38"/>
-            <rect x="14" y="9" width="1" height="1" fill="#b22c38"/>
-            <rect x="4" y="7" width="2" height="1" fill="#2b1619"/>
-            <rect x="10" y="7" width="2" height="1" fill="#2b1619"/>
-            <rect x="3" y="8" width="1" height="1" fill="#e09c84"/>
-            <rect x="12" y="8" width="1" height="1" fill="#e09c84"/>
-            <rect x="7" y="9" width="2" height="1" fill="#2b1619"/>
-            <rect x="3" y="10" width="10" height="4" fill="#c84c4c"/>
-            <rect x="2" y="10" width="1" height="3" fill="#c84c4c"/>
-            <rect x="13" y="10" width="1" height="3" fill="#c84c4c"/>
-            <rect x="7" y="11" width="2" height="2" fill="#f8f4e6"/>
-            <rect x="6" y="12" width="4" height="1" fill="#2b1619"/>
-            <rect x="2" y="13" width="1" height="1" fill="#fcd0bc"/>
-            <rect x="13" y="13" width="1" height="1" fill="#fcd0bc"/>
-            <rect x="3" y="14" width="10" height="2" fill="#492532"/>
-            <rect x="4" y="16" width="3" height="2" fill="#b22c38"/>
-            <rect x="9" y="16" width="3" height="2" fill="#b22c38"/>
-            <rect x="4" y="16" width="3" height="1" fill="#d64d56"/>
-            <rect x="9" y="16" width="3" height="1" fill="#d64d56"/>
+        
+        <svg id="asset-svg-char1" viewBox="0 0 64 64">
+            <path d="M 22 46 L 42 46 L 46 64 L 18 64 Z" fill="#4bcffa" stroke="#1e1e1e" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M 26 46 L 32 52 L 38 46 Z" fill="#ffffff" stroke="#1e1e1e" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="32" cy="28" r="14" fill="#ffe4d6" stroke="#1e1e1e" stroke-width="2.5"/>
+            <circle cx="24" cy="32" r="2.5" fill="#ffa8b6"/>
+            <circle cx="40" cy="32" r="2.5" fill="#ffa8b6"/>
+            <circle cx="27" cy="29" r="2.5" fill="#1e1e1e"/>
+            <circle cx="37" cy="29" r="2.5" fill="#1e1e1e"/>
+            <polygon points="32,31 34,33 30,33" fill="#e17055"/>
+            <path d="M 30 36 Q 32 38 34 36" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 16 26 C 14 10 50 10 48 26 C 44 18 38 18 32 20 C 26 18 20 18 16 26 Z" fill="#ffdd59" stroke="#1e1e1e" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M 14 22 Q 18 12 32 12 Q 46 12 50 22 Q 46 16 32 18 Q 18 16 14 22 Z" fill="#ffdd59" stroke="#1e1e1e" stroke-width="2.5"/>
         </svg>
 
-        <svg id="asset-svg-empty" viewBox="0 0 16 16">
-            <path d="M3 3 L13 13 M13 3 L3 13" stroke="#d45c5c" stroke-width="2" opacity="0.5"/>
+        <svg id="asset-svg-char2" viewBox="0 0 64 64">
+            <circle cx="16" cy="24" r="10" fill="#b08d6a" stroke="#1e1e1e" stroke-width="2.5"/>
+            <circle cx="48" cy="24" r="10" fill="#b08d6a" stroke="#1e1e1e" stroke-width="2.5"/>
+            <path d="M 24 44 L 40 44 L 44 64 L 20 64 Z" fill="#ff7675" stroke="#1e1e1e" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="32" cy="30" r="14" fill="#ffe4d6" stroke="#1e1e1e" stroke-width="2.5"/>
+            <circle cx="23" cy="34" r="2.5" fill="#ffa8b6"/>
+            <circle cx="41" cy="34" r="2.5" fill="#ffa8b6"/>
+            <circle cx="26" cy="31" r="2.5" fill="#1e1e1e"/>
+            <circle cx="38" cy="31" r="2.5" fill="#1e1e1e"/>
+            <polygon points="32,33 34,35 30,35" fill="#e17055"/>
+            <path d="M 29 37 Q 32 40 35 37" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 18 28 Q 24 16 32 20 Q 40 16 46 28 Q 40 20 32 24 Q 24 20 18 28 Z" fill="#b08d6a" stroke="#1e1e1e" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M 14 14 L 18 10 L 16 18 Z" fill="#55efc4" stroke="#1e1e1e" stroke-width="2"/>
+            <path d="M 50 14 L 46 10 L 48 18 Z" fill="#55efc4" stroke="#1e1e1e" stroke-width="2"/>
         </svg>
 
-        <svg id="asset-svg-clock" viewBox="0 0 16 16">
-            <rect x="3" y="3" width="10" height="10" fill="#d45c5c"/>
-            <rect x="5" y="5" width="6" height="6" fill="#fff8e1"/>
-            <rect x="4" y="1" width="2" height="2" fill="#7a5537"/>
-            <rect x="10" y="1" width="2" height="2" fill="#7a5537"/>
-            <rect x="7" y="6" width="1" height="3" fill="#2b2b2b"/>
+        <svg id="asset-svg-char3" viewBox="0 0 64 64">
+            <path d="M 20 44 L 44 44 L 46 64 L 18 64 Z" fill="#2d3436" stroke="#1e1e1e" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M 28 44 L 36 44 L 36 64 L 28 64 Z" fill="#dfe6e9" stroke="#1e1e1e" stroke-width="2.5"/>
+            <circle cx="32" cy="30" r="14" fill="#ffe4d6" stroke="#1e1e1e" stroke-width="2.5"/>
+            <circle cx="23" cy="34" r="2.5" fill="#ffa8b6"/>
+            <circle cx="41" cy="34" r="2.5" fill="#ffa8b6"/>
+            <circle cx="26" cy="31" r="2.5" fill="#1e1e1e"/>
+            <circle cx="38" cy="31" r="2.5" fill="#1e1e1e"/>
+            <polygon points="32,33 34,35 30,35" fill="#e17055"/>
+            <path d="M 29 38 Q 32 40 35 38" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 16 30 L 18 20 L 24 24 L 28 14 L 34 20 L 40 16 L 44 26 L 48 30 Z" fill="#00cec9" stroke="#1e1e1e" stroke-width="2.5" stroke-linejoin="round"/>
         </svg>
 
-        <!-- COLECTIVO URBANO TRADICIONAL PIXEL ART -->
-        <svg id="asset-svg-bus" viewBox="0 0 22 16">
-            <rect x="1" y="2" width="20" height="11" fill="#1a2536"/>
-            <rect x="2" y="3" width="18" height="5" fill="#f0f4f8"/>
-            <rect x="2" y="8" width="18" height="4" fill="#3a86c8"/>
-            <rect x="2" y="7" width="18" height="1" fill="#de4c4c"/>
-            <rect x="4" y="4" width="3" height="2" fill="#70b5e8"/>
-            <rect x="8" y="4" width="3" height="2" fill="#70b5e8"/>
-            <rect x="12" y="4" width="3" height="2" fill="#70b5e8"/>
-            <rect x="16" y="4" width="3" height="3" fill="#4095d8"/>
-            <rect x="4" y="12" width="4" height="3" fill="#222222"/>
-            <rect x="14" y="12" width="4" height="3" fill="#222222"/>
-            <rect x="5" y="13" width="2" height="1" fill="#bcbcbc"/>
-            <rect x="15" y="13" width="2" height="1" fill="#bcbcbc"/>
-            <rect x="20" y="9" width="1" height="1" fill="#ffeb3b"/>
-            <rect x="1" y="9" width="1" height="1" fill="#ff5722"/>
+        <svg id="asset-svg-char4" viewBox="0 0 64 64">
+            <path d="M 18 30 L 16 54 Q 32 58 48 54 L 46 30 Z" fill="#4b3832" stroke="#1e1e1e" stroke-width="2.5"/>
+            <path d="M 22 44 L 42 44 L 46 64 L 18 64 Z" fill="#fdcb6e" stroke="#1e1e1e" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M 26 44 L 38 44 L 38 52 L 26 52 Z" fill="#ffffff" stroke="#1e1e1e" stroke-width="2.5"/>
+            <circle cx="32" cy="30" r="14" fill="#ffe4d6" stroke="#1e1e1e" stroke-width="2.5"/>
+            <circle cx="26" cy="31" r="5" fill="none" stroke="#e17055" stroke-width="2"/>
+            <circle cx="38" cy="31" r="5" fill="none" stroke="#e17055" stroke-width="2"/>
+            <line x1="31" y1="31" x2="33" y2="31" stroke="#e17055" stroke-width="2"/>
+            <circle cx="23" cy="34" r="2.5" fill="#ffa8b6"/>
+            <circle cx="41" cy="34" r="2.5" fill="#ffa8b6"/>
+            <circle cx="26" cy="31" r="2" fill="#1e1e1e"/>
+            <circle cx="38" cy="31" r="2" fill="#1e1e1e"/>
+            <polygon points="32,34 34,36 30,36" fill="#e17055"/>
+            <path d="M 30 39 Q 32 41 34 39" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 18 28 C 18 10 46 10 46 28 C 46 24 38 22 32 22 C 26 22 18 24 18 28 Z" fill="#4b3832" stroke="#1e1e1e" stroke-width="2.5" stroke-linejoin="round"/>
         </svg>
 
-        <!-- MONEDA DETALLADA PIXEL ART -->
-        <svg id="asset-svg-coin" viewBox="0 0 16 16">
-            <rect x="4" y="0" width="8" height="16" fill="#b57a1d"/>
-            <rect x="2" y="2" width="12" height="12" fill="#b57a1d"/>
-            <rect x="0" y="4" width="16" height="8" fill="#b57a1d"/>
-            <rect x="5" y="1" width="6" height="14" fill="#d6a244"/>
-            <rect x="2" y="4" width="12" height="8" fill="#d6a244"/>
-            <rect x="5" y="2" width="6" height="12" fill="#ffe082"/>
-            <rect x="4" y="4" width="8" height="8" fill="#ffe082"/>
-            <rect x="7" y="4" width="2" height="8" fill="#fff8e1"/>
-            <rect x="6" y="6" width="4" height="2" fill="#fff8e1"/>
+        <svg id="asset-svg-bus" viewBox="0 0 64 64">
+            <circle cx="16" cy="48" r="8" fill="#1e1e1e"/>
+            <circle cx="48" cy="48" r="8" fill="#1e1e1e"/>
+            <path d="M 6 26 C 6 14 14 10 32 10 C 50 10 58 14 58 26 L 58 44 C 58 48 54 52 50 52 L 14 52 C 10 52 6 48 6 44 Z" fill="#fdcb6e" stroke="#1e1e1e" stroke-width="3" stroke-linejoin="round"/>
+            <line x1="6" y1="38" x2="58" y2="38" stroke="#1e1e1e" stroke-width="3"/>
+            <rect x="12" y="18" width="10" height="12" rx="3" fill="#81ecec" stroke="#1e1e1e" stroke-width="2.5"/>
+            <rect x="27" y="18" width="10" height="12" rx="3" fill="#81ecec" stroke="#1e1e1e" stroke-width="2.5"/>
+            <rect x="42" y="18" width="10" height="12" rx="3" fill="#81ecec" stroke="#1e1e1e" stroke-width="2.5"/>
+            <circle cx="16" cy="48" r="4" fill="#dfe6e9" stroke="#1e1e1e" stroke-width="2"/>
+            <circle cx="48" cy="48" r="4" fill="#dfe6e9" stroke="#1e1e1e" stroke-width="2"/>
+            <circle cx="54" cy="44" r="3" fill="#ff7675" stroke="#1e1e1e" stroke-width="1.5"/>
+            <circle cx="10" cy="44" r="3" fill="#ff7675" stroke="#1e1e1e" stroke-width="1.5"/>
+        </svg>
+
+        <svg id="asset-svg-empty" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="22" fill="none" stroke="#ff4757" stroke-width="2.5" stroke-dasharray="5,5" opacity="0.7"/>
+            <path d="M22,22 L42,42 M42,22 L22,42" stroke="#ff4757" stroke-width="3.5" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+
+        <svg id="asset-svg-clock" viewBox="0 0 64 64">
+            <rect x="16" y="50" width="6" height="10" transform="rotate(20 16 50)" fill="#747d8c" stroke="#2f3542" stroke-width="2" />
+            <rect x="42" y="50" width="6" height="10" transform="rotate(-20 42 50)" fill="#747d8c" stroke="#2f3542" stroke-width="2" />
+            <path d="M12,18 C12,10 24,10 22,18 Z" fill="#ff4757" stroke="#2f3542" stroke-width="2.5" stroke-linejoin="round" />
+            <path d="M52,18 C52,10 40,10 42,18 Z" fill="#ff4757" stroke="#2f3542" stroke-width="2.5" stroke-linejoin="round" />
+            <rect x="29" y="8" width="6" height="6" fill="#747d8c" stroke="#2f3542" stroke-width="2" />
+            <circle cx="32" cy="35" r="21" fill="#ff7675" stroke="#2f3542" stroke-width="2.5" />
+            <circle cx="32" cy="35" r="16" fill="#fff9e6" stroke="#2f3542" stroke-width="2" />
+            <circle cx="32" cy="22" r="1.5" fill="#2f3542"/>
+            <circle cx="32" cy="48" r="1.5" fill="#2f3542"/>
+            <circle cx="19" cy="35" r="1.5" fill="#2f3542"/>
+            <circle cx="45" cy="35" r="1.5" fill="#2f3542"/>
+            <path d="M32,35 L32,25" fill="none" stroke="#2f3542" stroke-width="3" stroke-linecap="round" />
+            <path d="M32,35 L40,35" fill="none" stroke="#2f3542" stroke-width="2.5" stroke-linecap="round" />
+            <circle cx="32" cy="35" r="3" fill="#ff4757" stroke="#2f3542" stroke-width="1" />
+            <path d="M20,25 Q25,20 35,21" fill="none" stroke="#fff" stroke-width="2" opacity="0.6" stroke-linecap="round" />
+        </svg>
+
+        <svg id="asset-svg-coin" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="22" fill="#ffb142" stroke="#2f3542" stroke-width="2.5"/>
+            <circle cx="32" cy="32" r="17" fill="#ffe082" stroke="#2f3542" stroke-width="2"/>
+            <circle cx="32" cy="32" r="12" fill="none" stroke="#ccae52" stroke-width="2" stroke-dasharray="4,2"/>
+            <path d="M32,20 L35,27 L43,28 L37,33 L39,41 L32,37 L25,41 L27,33 L21,28 L29,27 Z" fill="#ffa502" stroke="#2f3542" stroke-width="1.5" stroke-linejoin="round"/>
+            <circle cx="24" cy="22" r="2" fill="#fff" opacity="0.9" />
         </svg>
     </div>
 
-    <!-- PANTALLA 1: INICIO -->
     <div id="screen-intro" class="screen">
         <div style="width:100%">
             <h1>1 DE 2</h1>
-            <p style="color: var(--wood-dark); font-weight: bold; margin-bottom: 0; font-size: 0.65rem;">¿Podrás sostener el aula?</p>
+            <p style="color: #4b3bb3; font-weight: 700; margin-bottom: 0; font-size: 1.05rem;">¿Podrás evitar el aula desierta?</p>
         </div>
         
         <div class="intro-hero-art" id="vector-avatar-pool"></div>
 
         <div class="stat-banner">
             <div class="stat-huge">51%</div>
-            <p style="color: var(--text-main); font-size: 0.55rem; margin-bottom: 0; font-weight: bold; line-height: 1.4;">De los estudiantes de secundaria en Argentina acumuló 15 o más inasistencias.</p>
-            <p style="font-size: 0.45rem; color: #6b7da3; margin-top: 6px; font-weight: bold;">Informe Argentinos por la Educación, 2026</p>
+            <p style="color: var(--text-main); font-size: 0.9rem; margin-bottom: 0; font-weight: 700; line-height: 1.4;">De los estudiantes de secundaria en Argentina acumuló 15 o más inasistencias.</p>
+            <p style="font-size: 0.75rem; color: #6c5ce7; margin-top: 6px; font-weight: 700;">Informe Argentinos por la Educación, 2026</p>
         </div>
 
         <div style="width:100%">
-            <p style="font-size: 0.55rem; margin-bottom: 14px; line-height: 1.4;">Asume el mando del curso. Resuelve las alertas antes de que dejen sus bancos vacíos. ¡Pierdes si el aula se queda completamente vacía!</p>
-            <button class="btn" onclick="Game.start()">INICIAR CICLO</button>
+            <p style="font-size: 0.85rem; margin-bottom: 16px; line-height: 1.4;">Atendé las alarmas de tus alumnos antes de que dejen sus bancos vacíos. ¡Perdés inmediatamente si te quedás sin estudiantes!</p>
+            <button class="btn" onclick="Game.start()">INICIAR RECORRIDO</button>
         </div>
     </div>
 
-    <!-- PANTALLA 2: JUEGO -->
-    <div id="screen-game" class="screen hidden" style="background: var(--bg-main); padding: 8px;">
+    <div id="screen-game" class="screen hidden" style="background: var(--bg-main); padding: 12px;">
         <div id="hud">
-            <div class="hud-metric">SEM<span class="hud-val" id="hud-level">1</span></div>
-            <div class="hud-metric">ALUM<span class="hud-val" id="hud-students" style="color:#4a548c;">16/16</span></div>
+            <div class="hud-metric">SEM<span class="hud-val" id="hud-level" style="color:#5758bb;">1</span></div>
+            <div class="hud-metric">ALUM<span class="hud-val" id="hud-students" style="color:#ff4757;">16/16</span></div>
             <div class="hud-metric">PTS<span class="hud-val" id="hud-score" style="color:var(--success);">0</span></div>
             <div class="hud-metric">CMB<span class="hud-val" id="hud-streak" style="color:var(--warning);">0</span></div>
         </div>
@@ -510,79 +465,77 @@
         <div id="classroom-mesh"></div>
     </div>
 
-    <!-- INTERFAZ MODAL DE MINIJUEGOS (CUADRO DE PUNTOS REDUCIDO Y OPTIMIZADO) -->
     <div id="minigame-portal" class="hidden">
         <div id="mg-header">
             <div style="flex: 1; padding-right: 4px;">
-                <h3 id="mg-title" style="font-size: 1.05rem; font-weight: bold; margin:0; color: var(--wood-dark);">ALERTA</h3>
-                <p id="mg-desc" style="font-size: 0.8rem; color: #5b4632; margin: 6px 0 0 0; text-align: left; line-height: 1.4;"></p>
+                <h3 id="mg-title" style="font-size: 1.5rem; margin:0; color: #ff4757;">ALERTA</h3>
+                <p id="mg-desc" style="font-size: 0.9rem; color: #57606f; margin: 6px 0 0 0; text-align: left; line-height: 1.4; font-weight:700;"></p>
             </div>
-            <div style="flex-shrink: 0; margin-top: 2px;">
-                <!-- Cuadro de puntos optimizado: Más chico, no tapa el texto lateral -->
-                <span id="mg-points-badge" style="background: var(--floor); border: 2px solid var(--wood-dark); padding: 4px 6px; font-size: 0.55rem; font-weight: bold; color: var(--success); white-space: nowrap; display: inline-block;">+150 PTS</span>
+            <div>
+                <span id="mg-points-badge" style="background: #fff; border: 2.5px solid var(--ui-outline); border-radius: 12px; padding: 6px 10px; font-size: 0.8rem; font-weight: 700; color: var(--success); font-family:'Lilita One'; white-space: nowrap; box-shadow: 0 3px 0 var(--ui-outline);">+150 PTS</span>
             </div>
         </div>
         <div id="mg-progress-track"><div id="mg-progress-bar"></div></div>
         <div id="mg-body-content"></div>
-        <p style="font-size: 0.75rem; color: var(--danger); margin:0; font-weight: bold; text-align: center;">¡El tiempo del aula no se detiene!</p>
+        <p style="font-size: 0.85rem; color: var(--danger); margin:0; font-weight: 700; text-align: center;">¡El reloj del curso sigue corriendo!</p>
     </div>
 
-    <!-- PANTALLA 3: FIN DE PARTIDA -->
     <div id="screen-end" class="screen hidden">
-        <h2 style="color: var(--danger); font-size: 1.3rem; font-weight: bold; text-shadow: 1px 1px 0px var(--frame);">AULA DESIERTA</h2>
-        <p style="font-size: 0.65rem; margin-bottom: 12px; font-weight: bold;">El nivel de deserción fue absoluto. No quedan alumnos.</p>
+        <h2 style="color: var(--danger); font-size: 2.3rem; text-shadow: 2px 2px 0px rgba(0,0,0,0.05);">AULA DESIERTA</h2>
+        <p style="font-size: 0.95rem; margin-bottom: 16px; font-weight: 700;">El nivel de deserción fue total. Te quedaste sin alumnos en clase.</p>
 
         <div class="results-mesh">
             <div class="metric-card">
                 <div class="metric-card-huge" id="res-score">0</div>
-                <div style="font-size: 0.55rem; color: var(--wood-dark); margin-top: 4px; font-weight: bold;">Puntaje</div>
+                <div style="font-size: 0.75rem; color: #747d8c; margin-top: 4px; font-weight: 700;">Puntaje Total</div>
             </div>
             <div class="metric-card">
                 <div class="metric-card-huge" id="res-highscore" style="color: var(--warning);">0</div>
-                <div style="font-size: 0.55rem; color: var(--wood-dark); margin-top: 4px; font-weight: bold;">Récord</div>
+                <div style="font-size: 0.75rem; color: #747d8c; margin-top: 4px; font-weight: 700;">Máximo Récord</div>
             </div>
             <div class="metric-card">
-                <div class="metric-card-huge" id="res-level" style="color: #4a548c;">1</div>
-                <div style="font-size: 0.55rem; color: var(--wood-dark); margin-top: 4px; font-weight: bold;">Semana</div>
+                <div class="metric-card-huge" id="res-level" style="color: #5758bb;">1</div>
+                <div style="font-size: 0.75rem; color: #747d8c; margin-top: 4px; font-weight: 700;">Semana Máxima</div>
             </div>
             <div class="metric-card">
                 <div class="metric-card-huge" id="res-saved" style="color: var(--success);">0</div>
-                <div style="font-size: 0.55rem; color: var(--wood-dark); margin-top: 4px; font-weight: bold;">Retenidos</div>
+                <div style="font-size: 0.75rem; color: #747d8c; margin-top: 4px; font-weight: 700;">Retenidos</div>
             </div>
         </div>
 
-        <h3 style="font-size: 0.6rem; font-weight: bold; margin-bottom: 8px; border-bottom: 2px dashed var(--wood-dark); padding-bottom: 4px; text-align: left; color: var(--wood-dark);">Tus Pérdidas vs Realidad</h3>
+        <h3 style="font-size: 1.1rem; margin-bottom: 8px; border-bottom: 3px dashed var(--ui-outline); padding-bottom: 4px; text-align: left; color: var(--text-main);">Tus Deserciones vs Realidad</h3>
         <div id="dashboard-chart-root"></div>
 
         <div class="survey-card-box">
-            <h4 style="font-size: 0.6rem; font-weight: bold; margin:0; color: var(--wood-dark); text-align: left;">¿Viviste esto en la escuela?</h4>
+            <h4 style="font-size: 1rem; font-family:'Lilita One'; margin:0; color: var(--text-main); text-align: left;">¿Viviste esto en tu escuela?</h4>
             <div class="survey-options">
-                <label class="survey-item-row"><input type="checkbox" name="survey" value="SUEÑO"> Inasistencia por desgano / sueño</label>
-                <label class="survey-item-row"><input type="checkbox" name="survey" value="COLECTIVO"> Frecuencia o paro de transporte</label>
-                <label class="survey-item-row"><input type="checkbox" name="survey" value="TRANSPORTE"> Falta de recursos (útiles/boleto)</label>
-                <label class="survey-item-row"><input type="checkbox" name="survey" value="TRABAJO"> Cuidado familiar o trabajo laboral</label>
+                <label class="survey-item-row"><input type="checkbox" name="survey" value="SUEÑO"> Faltar por desgano, cansancio o sueño</label>
+                <label class="survey-item-row"><input type="checkbox" name="survey" value="COLECTIVO"> Problemas de frecuencias o paros de transporte</label>
+                <label class="survey-item-row"><input type="checkbox" name="survey" value="TRANSPORTE"> Complicación económica para útiles/boletos</label>
+                <label class="survey-item-row"><input type="checkbox" name="survey" value="TRABAJO"> Tener que trabajar o cuidar familiares de urgencia</label>
             </div>
         </div>
 
-        <button class="btn" onclick="Game.restartLoop()">REINTENTAR</button>
+        <button class="btn" onclick="Game.restartLoop()">VOLVER A INTENTAR</button>
     </div>
 
 </div>
 
 <script>
     const CONFIG_MOTIVOS = {
-        SUEÑO: { id: 'SUEÑO', label: 'Tengo sueño', realStat: 39, points: 150, desc: '¡Despiértalo! Toca el despertador rápidamente.', baseDuration: 4.0 },
-        COLECTIVO: { id: 'COLECTIVO', label: 'Perdí el bus', realStat: 34, points: 200, desc: 'Alterna IZQ y DER rítmicamente para correr.', baseDuration: 4.2 },
-        TRANSPORTE: { id: 'TRANSPORTE', label: 'No tengo pasaje', realStat: 32, points: 175, desc: 'Consigue las monedas antes de que desaparezcan.', baseDuration: 4.5 },
-        TRABAJO: { id: 'TRABAJO', label: 'Tengo trabajo', realStat: 9, points: 225, desc: 'Muévete desde el Trabajo (💼) a la Escuela (🏫).', baseDuration: 5.0 }
+        SUEÑO: { id: 'SUEÑO', label: 'Tengo sueño', realStat: 39, points: 150, desc: '¡Despertalo! Tocá el despertador rápido.', baseDuration: 3.8 },
+        COLECTIVO: { id: 'COLECTIVO', label: 'Perdí el bondi', realStat: 34, points: 200, desc: 'Alterná IZQ y DER al ritmo para correr.', baseDuration: 4.0 },
+        TRANSPORTE: { id: 'TRANSPORTE', label: 'Sin pasaje', realStat: 32, points: 175, desc: 'Atrapá las monedas antes de que desaparezcan.', baseDuration: 4.2 },
+        TRABAJO: { id: 'TRABAJO', label: 'Debo trabajar', realStat: 9, points: 225, desc: 'Mové el ícono desde el Trabajo (💼) a la Escuela (🏫).', baseDuration: 4.8 }
     };
 
     const MOTIVO_KEYS = ['SUEÑO', 'COLECTIVO', 'TRANSPORTE', 'TRABAJO'];
+    const AVATAR_ASSET_IDS = ['asset-svg-char1', 'asset-svg-char2', 'asset-svg-char3', 'asset-svg-char4'];
 
     let Game = {
         score: 0, comboStreak: 0, gameTime: 0, studentsCount: 16, currentLevel: 1,
         desksArray: [], intervalLoopPointer: null, survivalBonusTracker: 0,
-        baseSpawnCooldown: 3000, lastSpawnTimestamp: 0, activeMinigameScope: null,
+        baseSpawnCooldown: 2800, lastSpawnTimestamp: 0, activeMinigameScope: null,
         statsPlayerLosses: { SUEÑO: 0, COLECTIVO: 0, TRANSPORTE: 0, TRABAJO: 0 },
         totalSavedCounter: 0,
 
@@ -590,15 +543,11 @@
             const root = document.getElementById('vector-avatar-pool');
             if(!root) return;
             root.innerHTML = '';
-            for(let j = 0; j < 3; j++) {
-                let source = document.getElementById('asset-svg-student');
-                if(!source) return;
-                let instance = source.cloneNode(true);
-                instance.removeAttribute('id');
-                if (j === 1) instance.style.filter = 'hue-rotate(240deg)';
-                if (j === 2) instance.style.opacity = '0.4';
-                root.appendChild(instance);
-            }
+            AVATAR_ASSET_IDS.slice(0, 3).forEach(id => {
+                let node = document.getElementById(id).cloneNode(true);
+                node.removeAttribute('id');
+                root.appendChild(node);
+            });
         },
 
         buildClassroomMeshNodes: function() {
@@ -617,25 +566,19 @@
                 const wrap = document.createElement('div');
                 wrap.className = 'sprite-wrap';
                 
-                let studentSvg = document.getElementById('asset-svg-student').cloneNode(true);
+                let chosenAssetId = AVATAR_ASSET_IDS[i % AVATAR_ASSET_IDS.length];
+                let studentSvg = document.getElementById(chosenAssetId).cloneNode(true);
                 studentSvg.removeAttribute('id');
-                
-                if(i % 3 === 1) {
-                    studentSvg.style.filter = 'hue-rotate(230deg) brightness(0.9)';
-                } else if(i % 3 === 2) {
-                    studentSvg.style.filter = 'grayscale(30%) sepia(20%)';
-                }
 
                 wrap.appendChild(studentSvg);
-
                 node.appendChild(tag);
                 node.appendChild(wrap);
                 node.addEventListener('click', () => this.handleNodeInteraction(i));
                 mesh.appendChild(node);
 
                 this.desksArray.push({
-                    id: i, element: node, tagElement: tag, spriteWrapper: wrap,
-                    status: 'occupied', motivo: null, timer: 0, maxTimer: 0, triggeredAt: 0
+                    id: i, element: node, tagElement: tag, spriteWrapper: wrap, genderAssetId: chosenAssetId,
+                    status: 'occupied', motivo: null, timer: 0, maxTimer: 0
                 });
             }
         },
@@ -645,9 +588,10 @@
             document.getElementById('screen-game').classList.remove('hidden');
 
             this.score = 0; this.comboStreak = 0; this.gameTime = 0; this.studentsCount = 16; this.currentLevel = 1;
-            this.survivalBonusTracker = 0; this.baseSpawnCooldown = 3000; this.totalSavedCounter = 0;
+            this.survivalBonusTracker = 0; this.baseSpawnCooldown = 2800; this.totalSavedCounter = 0;
             this.statsPlayerLosses = { SUEÑO: 0, COLECTIVO: 0, TRANSPORTE: 0, TRABAJO: 0 };
             this.lastSpawnTimestamp = Date.now();
+            this.activeMinigameScope = null;
 
             this.buildClassroomMeshNodes();
             this.syncHUDDisplay();
@@ -657,11 +601,20 @@
         },
 
         processSystemTick: function() {
+            if (this.studentsCount <= 0) {
+                this.triggerEndgameEvaluationSummary();
+                return;
+            }
+
+            if (this.activeMinigameScope) {
+                this.activeMinigameScope.tickDownTimer();
+            }
+
             let nowTimestamp = Date.now();
             this.gameTime += 0.1;
             this.survivalBonusTracker += 0.1;
 
-            let calculatedLevel = Math.floor(this.gameTime / 20) + 1;
+            let calculatedLevel = Math.floor(this.gameTime / 18) + 1;
             if (calculatedLevel !== this.currentLevel) {
                 this.currentLevel = calculatedLevel;
                 this.showFloatingEffect(document.getElementById('hud-level'), 'SEM+');
@@ -669,14 +622,12 @@
 
             if (this.survivalBonusTracker >= 10) {
                 this.survivalBonusTracker = 0;
-                if (this.studentsCount > 0) {
-                    let passivePoints = 100 * this.currentLevel;
-                    this.score += passivePoints;
-                    this.showFloatingEffect(document.getElementById('hud-score'), `+${passivePoints}`);
-                }
+                let passivePoints = 120 * this.currentLevel;
+                this.score += passivePoints;
+                this.showFloatingEffect(document.getElementById('hud-score'), `+${passivePoints}`);
             }
 
-            let operationalSpawnCooldown = Math.max(900, this.baseSpawnCooldown - (this.currentLevel * 300));
+            let operationalSpawnCooldown = Math.max(800, this.baseSpawnCooldown - (this.currentLevel * 250));
             if (nowTimestamp - this.lastSpawnTimestamp > operationalSpawnCooldown) {
                 this.triggerStudentAlertRiskState();
                 this.lastSpawnTimestamp = nowTimestamp;
@@ -690,7 +641,7 @@
 
                     if (desk.timer <= 0) {
                         this.executeStudentDropout(desk);
-                    } else if (desk.timer <= 1.5 && desk.status !== 'critical') {
+                    } else if (desk.timer <= 1.4 && desk.status !== 'critical') {
                         desk.status = 'critical';
                         desk.element.className = 'desk-node critical';
                     }
@@ -698,14 +649,6 @@
             });
 
             this.syncHUDDisplay();
-
-            if (this.studentsCount === 0) {
-                this.triggerEndgameEvaluationSummary();
-            }
-
-            if (this.activeMinigameScope) {
-                this.activeMinigameScope.tickDownTimer();
-            }
         },
 
         triggerStudentAlertRiskState: function() {
@@ -720,9 +663,8 @@
             targetDesk.motivo = config;
             
             let levelTimerDeductionFactor = this.currentLevel * 0.35;
-            targetDesk.maxTimer = Math.max(2.0, 5.0 - levelTimerDeductionFactor);
+            targetDesk.maxTimer = Math.max(1.8, 4.8 - levelTimerDeductionFactor);
             targetDesk.timer = targetDesk.maxTimer;
-            targetDesk.triggeredAt = this.gameTime;
 
             targetDesk.element.className = 'desk-node at_risk';
             targetDesk.tagElement.innerText = config.label;
@@ -737,6 +679,11 @@
         },
 
         executeStudentDropout: function(desk) {
+            if (this.activeMinigameScope && this.activeMinigameScope.desk.id === desk.id) {
+                document.getElementById('minigame-portal').classList.add('hidden');
+                this.activeMinigameScope = null;
+            }
+
             desk.status = 'leaving';
             desk.element.className = 'desk-node leaving';
             this.statsPlayerLosses[desk.motivo.id]++;
@@ -746,20 +693,23 @@
                 desk.status = 'empty';
                 desk.element.className = 'desk-node empty';
                 desk.tagElement.innerText = '';
-                
                 desk.spriteWrapper.innerHTML = '';
                 let emptySeatSvg = document.getElementById('asset-svg-empty').cloneNode(true);
                 emptySeatSvg.removeAttribute('id');
                 desk.spriteWrapper.appendChild(emptySeatSvg);
-            }, 250);
+            }, 200);
 
             this.studentsCount--;
             this.syncHUDDisplay();
+
+            if (this.studentsCount <= 0) {
+                this.triggerEndgameEvaluationSummary();
+            }
         },
 
         syncHUDDisplay: function() {
             document.getElementById('hud-level').innerText = this.currentLevel;
-            document.getElementById('hud-students').innerText = `${this.studentsCount}/16`;
+            document.getElementById('hud-students').innerText = `${Math.max(0, this.studentsCount)}/16`;
             document.getElementById('hud-score').innerText = Math.floor(this.score);
             document.getElementById('hud-streak').innerText = this.comboStreak;
         },
@@ -780,7 +730,7 @@
 
             overlay.classList.remove('hidden');
 
-            let operationalResolutionTime = Math.max(2.0, desk.motivo.baseDuration - (this.currentLevel * 0.3));
+            let operationalResolutionTime = Math.max(1.8, desk.motivo.baseDuration - (this.currentLevel * 0.25));
 
             this.activeMinigameScope = {
                 desk: desk,
@@ -792,22 +742,22 @@
                     this.timeLeft -= 0.1;
                     let currentPercentage = (this.timeLeft / this.maxDuration) * 100;
                     let bar = document.getElementById('mg-progress-bar');
-                    if(bar) bar.style.width = `${currentPercentage}%`;
+                    if(bar) bar.style.width = `${Math.max(0, currentPercentage)}%`;
                     if (this.timeLeft <= 0) {
                         Game.terminateActiveMinigame(false);
                     }
                 }
             };
 
-            this.buildMinigameGraphicLayout(desk.motivo.id, body);
+            this.buildMinigameGraphicLayout(desk.motivo.id, body, desk.genderAssetId);
         },
 
-        buildMinigameGraphicLayout: function(id, hostContainer) {
+        buildMinigameGraphicLayout: function(id, hostContainer, originalGenderId) {
             let amg = this.activeMinigameScope;
 
             if (id === 'SUEÑO') {
                 amg.memoryData.clicksCounter = 0;
-                amg.memoryData.targetRequired = Math.min(8, 4 + this.currentLevel);
+                amg.memoryData.targetRequired = Math.min(7, 4 + Math.floor(this.currentLevel / 2));
 
                 const clickFrame = document.createElement('div');
                 clickFrame.className = 'mg-clock-engine';
@@ -816,21 +766,19 @@
                 clickFrame.appendChild(svgClock);
 
                 const feedbackCounterText = document.createElement('div');
-                feedbackCounterText.style.cssText = 'font-weight:bold; margin-top:18px; font-size:0.95rem; color:var(--text-main);';
+                feedbackCounterText.style.cssText = 'font-weight:700; margin-top:14px; font-size:1.1rem; color:var(--text-main);';
                 feedbackCounterText.innerText = `TAPS: 0 / ${amg.memoryData.targetRequired}`;
 
                 clickFrame.addEventListener('click', () => {
                     amg.memoryData.clicksCounter++;
                     feedbackCounterText.innerText = `TAPS: ${amg.memoryData.clicksCounter} / ${amg.memoryData.targetRequired}`;
-                    
-                    clickFrame.style.transform = 'scale(0.9)';
+                    clickFrame.style.transform = 'scale(0.85)';
                     setTimeout(() => clickFrame.style.transform = '', 40);
 
                     if (amg.memoryData.clicksCounter >= amg.memoryData.targetRequired) {
                         this.terminateActiveMinigame(true);
                     }
                 });
-
                 hostContainer.appendChild(clickFrame);
                 hostContainer.appendChild(feedbackCounterText);
 
@@ -843,7 +791,7 @@
 
                 const runnerNode = document.createElement('div');
                 runnerNode.className = 'mg-runner-sprite';
-                let rSvg = document.getElementById('asset-svg-student').cloneNode(true);
+                let rSvg = document.getElementById(originalGenderId).cloneNode(true);
                 rSvg.removeAttribute('id');
                 runnerNode.appendChild(rSvg);
 
@@ -864,14 +812,12 @@
 
                 const triggerStepInput = (footSide) => {
                     if (amg.memoryData.lastActiveFoot !== footSide) {
-                        let effortStepFactor = Math.max(5, 9 - this.currentLevel);
-                        amg.memoryData.runningDistance += effortStepFactor;
-                        
+                        amg.memoryData.runningDistance += Math.max(6, 10 - this.currentLevel);
                         let trackWidth = canvasTrack.clientWidth || 320; 
-                        let widthBoundaryMax = Math.max(100, trackWidth - 65); 
+                        let widthBoundaryMax = Math.max(100, trackWidth - 75); 
                         let updatedLeftPx = (amg.memoryData.runningDistance / 100) * widthBoundaryMax;
                         
-                        runnerNode.style.transform = `translateX(${Math.min(widthBoundaryMax, Math.max(0, updatedLeftPx))}px)`;
+                        runnerNode.style.transform = `translateX(${Math.min(widthBoundaryMax, updatedLeftPx)}px)`;
                         amg.memoryData.lastActiveFoot = footSide;
 
                         if (amg.memoryData.runningDistance >= 100) {
@@ -880,22 +826,8 @@
                     }
                 };
 
-                const setupAntiLagEvent = (btnElement, sideKey) => {
-                    let preventGhostEvents = false;
-                    btnElement.addEventListener('touchstart', (e) => {
-                        e.preventDefault();
-                        preventGhostEvents = true;
-                        triggerStepInput(sideKey);
-                    }, { passive: false });
-                    btnElement.addEventListener('mousedown', (e) => {
-                        if (preventGhostEvents) { e.preventDefault(); preventGhostEvents = false; return; }
-                        triggerStepInput(sideKey);
-                    });
-                };
-
-                setupAntiLagEvent(leftFootBtn, 'L');
-                setupAntiLagEvent(rightFootBtn, 'R');
-
+                leftFootBtn.addEventListener('click', () => triggerStepInput('L'));
+                rightFootBtn.addEventListener('click', () => triggerStepInput('R'));
                 interfaceDualLayout.appendChild(leftFootBtn);
                 interfaceDualLayout.appendChild(rightFootBtn);
                 hostContainer.appendChild(canvasTrack);
@@ -920,40 +852,30 @@
 
                     let w = viewportBoard.clientWidth || 340;
                     let h = viewportBoard.clientHeight || 250;
-                    let placementX = Math.random() * (w - 52); 
-                    let placementY = Math.random() * (h - 52);
-                    coinElement.style.left = `${Math.max(0, placementX)}px`;
-                    coinElement.style.top = `${Math.max(0, placementY)}px`;
+                    coinElement.style.left = `${Math.random() * (w - 52)}px`;
+                    coinElement.style.top = `${Math.random() * (h - 52)}px`;
 
-                    const handleCoinGrab = () => {
+                    coinElement.addEventListener('click', () => {
                         amg.memoryData.coinsCaughtCount++;
                         if (amg.memoryData.coinsCaughtCount >= amg.memoryData.requiredAmount) {
                             this.terminateActiveMinigame(true);
                         } else {
                             coreCoinSpawnRoutine();
                         }
-                    };
-
-                    coinElement.addEventListener('touchstart', (ev) => { ev.preventDefault(); handleCoinGrab(); });
-                    coinElement.addEventListener('mousedown', () => { handleCoinGrab(); });
-
+                    });
                     viewportBoard.appendChild(coinElement);
                 };
-
                 hostContainer.appendChild(viewportBoard);
                 coreCoinSpawnRoutine();
 
             } else if (id === 'TRABAJO') {
-                amg.memoryData.playerR = 0;
-                amg.memoryData.playerC = 0;
-
+                amg.memoryData.playerR = 0; amg.memoryData.playerC = 0;
                 const mazeMatrix = [
                     ['S', 'P', 'W', 'W'],
                     ['W', 'P', 'P', 'W'],
                     ['W', 'W', 'P', 'P'],
                     ['W', 'W', 'W', 'E']
                 ];
-
                 const mazeGridNode = document.createElement('div');
                 mazeGridNode.className = 'mg-maze-grid';
 
@@ -966,40 +888,29 @@
                             const cellType = mazeMatrix[r][c];
 
                             if (r === amg.memoryData.playerR && c === amg.memoryData.playerC) {
-                                cellNode.classList.add('player');
-                                cellNode.innerText = '🏃';
+                                cellNode.classList.add('player'); cellNode.innerText = '🏃';
                             } else if (cellType === 'W') {
-                                cellNode.classList.add('wall');
-                                cellNode.innerText = '🧱';
+                                cellNode.classList.add('wall'); cellNode.innerText = '🧱';
                             } else if (cellType === 'S') {
-                                cellNode.classList.add('start');
-                                cellNode.innerText = '💼';
+                                cellNode.classList.add('start'); cellNode.innerText = '💼';
                             } else if (cellType === 'E') {
-                                cellNode.classList.add('end');
-                                cellNode.innerText = '🏫';
+                                cellNode.classList.add('end'); cellNode.innerText = '🏫';
                             } else {
                                 cellNode.classList.add('path');
                             }
 
                             cellNode.addEventListener('click', () => {
                                 if (cellType === 'W') return;
-                                let distanceDiff = Math.abs(r - amg.memoryData.playerR) + Math.abs(c - amg.memoryData.playerC);
-                                if (distanceDiff === 1) {
-                                    amg.memoryData.playerR = r;
-                                    amg.memoryData.playerC = c;
+                                if (Math.abs(r - amg.memoryData.playerR) + Math.abs(c - amg.memoryData.playerC) === 1) {
+                                    amg.memoryData.playerR = r; amg.memoryData.playerC = c;
                                     updateAndDrawMaze();
-
-                                    if (mazeMatrix[r][c] === 'E') {
-                                        this.terminateActiveMinigame(true);
-                                    }
+                                    if (mazeMatrix[r][c] === 'E') this.terminateActiveMinigame(true);
                                 }
                             });
-
                             mazeGridNode.appendChild(cellNode);
                         }
                     }
                 };
-
                 updateAndDrawMaze();
                 hostContainer.appendChild(mazeGridNode);
             }
@@ -1007,6 +918,8 @@
 
         terminateActiveMinigame: function(victoryConditionMatch) {
             document.getElementById('minigame-portal').classList.add('hidden');
+            if (!this.activeMinigameScope) return;
+            
             let workingDeskReference = this.activeMinigameScope.desk;
 
             if (victoryConditionMatch) {
@@ -1015,7 +928,7 @@
 
                 this.comboStreak++;
                 if (this.comboStreak >= 3) {
-                    structuralPointsCalculated = structuralPointsCalculated * 1.5;
+                    structuralPointsCalculated = Math.floor(structuralPointsCalculated * 1.5);
                     notificationFeedbackString += " x1.5";
                 }
 
@@ -1027,7 +940,7 @@
                 workingDeskReference.motivo = null;
                 workingDeskReference.tagElement.innerText = ''; 
 
-                this.showFloatingEffect(workingDeskReference.element, `+${Math.floor(structuralPointsCalculated)}${notificationFeedbackString}`);
+                this.showFloatingEffect(workingDeskReference.element, `+${structuralPointsCalculated}${notificationFeedbackString}`);
             } else {
                 this.executeStudentDropout(workingDeskReference);
             }
@@ -1044,15 +957,20 @@
             let rectBounds = anchor.getBoundingClientRect();
             let parentBounds = document.getElementById('game-container').getBoundingClientRect();
 
-            labelNode.style.left = `${rectBounds.left - parentBounds.left + 4}px`;
-            labelNode.style.top = `${rectBounds.top - parentBounds.top - 8}px`;
+            labelNode.style.left = `${rectBounds.left - parentBounds.left + 8}px`;
+            labelNode.style.top = `${rectBounds.top - parentBounds.top - 12}px`;
 
             document.getElementById('game-container').appendChild(labelNode);
-            setTimeout(() => labelNode.remove(), 500);
+            setTimeout(() => labelNode.remove(), 600);
         },
 
         triggerEndgameEvaluationSummary: function() {
-            if(this.intervalLoopPointer) clearInterval(this.intervalLoopPointer);
+            if(this.intervalLoopPointer) {
+                clearInterval(this.intervalLoopPointer);
+                this.intervalLoopPointer = null;
+            }
+            
+            document.getElementById('minigame-portal').classList.add('hidden');
             document.getElementById('screen-game').classList.add('hidden');
             document.getElementById('screen-end').classList.remove('hidden');
 
@@ -1068,28 +986,28 @@
             }
             document.getElementById('res-highscore').innerText = historicalHighScore;
 
-            const analyticalChartsRootElement = document.getElementById('dashboard-chart-root');
-            analyticalChartsRootElement.innerHTML = '';
+            const chartRoot = document.getElementById('dashboard-chart-root');
+            chartRoot.innerHTML = '';
 
-            let processedTotalLossesSum = Object.values(this.statsPlayerLosses).reduce((a, b) => a + b, 0) || 1;
+            let totalLosses = Object.values(this.statsPlayerLosses).reduce((a, b) => a + b, 0) || 1;
 
             MOTIVO_KEYS.forEach(k => {
                 let configuration = CONFIG_MOTIVOS[k];
-                let userPercentageCalculated = Math.round((this.statsPlayerLosses[k] / processedTotalLossesSum) * 100);
+                let userPercentage = Math.round((this.statsPlayerLosses[k] / totalLosses) * 100);
 
-                const elementRowMarkup = document.createElement('div');
-                elementRowMarkup.className = 'analytics-bar-row';
-                elementRowMarkup.innerHTML = `
+                const barRow = document.createElement('div');
+                barRow.className = 'analytics-bar-row';
+                barRow.innerHTML = `
                     <div class="analytics-flex-label">
-                        <span style="font-weight:bold;">${configuration.label}</span>
-                        <span>Tuyo:${userPercentageCalculated}% vs País:${configuration.realStat}%</span>
+                        <span style="font-weight:700;">${configuration.label}</span>
+                        <span>Tuyo: ${userPercentage}% vs País: ${configuration.realStat}%</span>
                     </div>
                     <div class="analytics-track-bar">
-                        <div class="bar-user-layer" style="width: ${userPercentageCalculated}%"></div>
+                        <div class="bar-user-layer" style="width: ${userPercentage}%"></div>
                         <div class="bar-real-layer" style="width: ${configuration.realStat}%"></div>
                     </div>
                 `;
-                analyticalChartsRootElement.appendChild(elementRowMarkup);
+                chartRoot.appendChild(barRow);
             });
         },
 
@@ -1100,14 +1018,10 @@
         }
     };
 
-    function initGameEngine() {
-        try { Game.setupIntroAvatars(); } catch(e) { console.error(e); }
-    }
-
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initGameEngine);
+        document.addEventListener('DOMContentLoaded', () => { Game.setupIntroAvatars(); });
     } else {
-        initGameEngine();
+        Game.setupIntroAvatars();
     }
 </script>
 
